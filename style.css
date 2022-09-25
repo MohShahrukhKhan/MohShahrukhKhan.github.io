@@ -472,9 +472,6 @@ section .title::after {
   justify-content: center;
   align-items: center;
 }
-.techStack {
-  color: purple;
-}
 
 .demo-div a,
 .repo-div a,
