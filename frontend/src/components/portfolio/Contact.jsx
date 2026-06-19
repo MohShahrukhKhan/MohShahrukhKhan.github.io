@@ -12,7 +12,7 @@ const API = `${import.meta.env.VITE_BACKEND_URL || "http://localhost:8001"}/api`
 
 const channels = [
   { icon: Mail, label: "Email", value: profile.email, href: `mailto:${profile.email}`, testId: "contact-email" },
-  { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/moh-shahrukh-khan", href: profile.linkedin, testId: "contact-linkedin" },
+  { icon: Linkedin, label: "LinkedIn", value: profile.linkedin.replace("https://", ""), href: profile.linkedin, testId: "contact-linkedin" },
   { icon: Github, label: "GitHub", value: profile.github.replace("https://", ""), href: profile.github, testId: "contact-github" },
 ];
 
