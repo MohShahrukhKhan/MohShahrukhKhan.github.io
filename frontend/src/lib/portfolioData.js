@@ -13,7 +13,7 @@ export const profile = {
 
 export const experience = [
   {
-    company: "Mobioffice Software Innovations Private Limited",
+    company: "Mobioffice",
     role: "Software Engineer — Java Backend",
     period: "Present",
     location: "India",
@@ -30,10 +30,10 @@ export const experience = [
 export const projects = [
   {
     id: "wip-stock",
-    title: "WIP Stock Reporting System",
-    tagline: "Real-time work-in-progress visibility across multi-stage manufacturing.",
+    title: "Real-time Stock Reporting System",
+    tagline: "Real-time stock visibility for multi-stage operations.",
     overview:
-      "An enterprise reporting engine that aggregates inventory across multiple production stages and surfaces real-time WIP positions, aged stock, and bottleneck signals for operations teams.",
+      "An enterprise reporting engine that aggregates inventory data across multiple stages and surfaces real-time positions, aged stock, and bottleneck signals for operations teams.",
     architecture:
       "Spring Boot service layer with a read-optimized PostgreSQL schema, scheduled aggregation jobs, and a thin REST facade feeding the operations dashboard. Heavy reports use materialized views and pagination cursors.",
     technologies: ["Java 17", "Spring Boot", "JPA / Hibernate", "PostgreSQL", "REST", "Docker"],
@@ -43,15 +43,15 @@ export const projects = [
     ],
     impact: [
       "Report generation time reduced from ~38s to ~5s on peak datasets.",
-      "Operations team now closes daily WIP review in minutes instead of hours.",
+      "Operations team now closes daily review in minutes instead of hours.",
     ],
     image: "https://images.unsplash.com/photo-1506399309177-3b43e99fead2",
     accent: "from-blue-500/30 to-blue-900/0",
   },
   {
     id: "sales-return",
-    title: "Sales Return Order Management",
-    tagline: "Closed-loop reverse logistics with auditable state machine.",
+    title: "Returns Lifecycle Management",
+    tagline: "Closed-loop reverse logistics with auditable workflows.",
     overview:
       "A returns workflow service modelling the full lifecycle — request, approval, pickup, QC, restocking, and refund — with strict auditability and role-based controls.",
     architecture:
@@ -70,7 +70,7 @@ export const projects = [
   },
   {
     id: "inventory",
-    title: "Inventory Management System",
+    title: "Multi-warehouse Inventory Platform",
     tagline: "High-throughput stock engine with predictable APIs.",
     overview:
       "A multi-warehouse inventory platform handling stock movements, transfers, adjustments, and reservations with strict consistency guarantees and a clean REST contract.",
