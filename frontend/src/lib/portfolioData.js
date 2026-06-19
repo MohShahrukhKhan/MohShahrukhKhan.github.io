@@ -18,11 +18,11 @@ export const experience = [
     period: "Present",
     location: "India",
     points: [
-      "Architect and ship Spring Boot microservices powering enterprise inventory & sales platforms used by hundreds of business users.",
-      "Designed normalized PostgreSQL schemas and tuned slow queries with composite indexes, partitioning, and CTE rewrites — cutting heavy report latency by ~70%.",
-      "Built secured REST APIs with JWT, role-based access, and granular auditing; documented contracts with OpenAPI.",
-      "Led performance optimization sprints: connection pool tuning (HikariCP), N+1 elimination via JPA fetch graphs, and caching at the query and HTTP layer.",
-      "Integrated AI-assisted workflows (Claude Code, OpenCode, MCP) into daily engineering — accelerating reviews, test scaffolding, and refactors.",
+      "Architect and ship Spring Boot microservices powering enterprise inventory and sales platforms.",
+      "Design normalized PostgreSQL schemas and optimize complex queries using indexing, partitioning, and CTE-based rewrites.",
+      "Build secure REST APIs with JWT authentication, role-based access control, auditing, and OpenAPI documentation.",
+      "Drive backend performance improvements through connection pool tuning, JPA optimization, caching strategies, and database tuning.",
+      "Integrate AI-assisted workflows (Claude Code, OpenCode, MCP) to accelerate development, testing, code reviews, and refactoring.",
     ],
   },
 ];
