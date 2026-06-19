@@ -139,6 +139,29 @@ npm run dev
 
 Open `http://localhost:5173` in your browser.
 
+### 6. Stop Services
+
+```bash
+# Stop frontend
+kill $(lsof -ti :5173)
+
+# Stop backend
+kill $(lsof -ti :8001)
+
+# Stop MongoDB (Homebrew)
+brew services stop mongodb/brew/mongodb-community@8.0
+
+# Or if started manually
+kill $(pgrep mongod)
+```
+
+Or stop all at once:
+```bash
+kill $(lsof -ti :5173) 2>/dev/null
+kill $(lsof -ti :8001) 2>/dev/null
+kill $(pgrep mongod) 2>/dev/null
+```
+
 ---
 
 ## Customize Your Portfolio
