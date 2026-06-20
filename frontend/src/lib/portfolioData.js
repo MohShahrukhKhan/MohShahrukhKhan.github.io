@@ -3,12 +3,12 @@ export const profile = {
   role: "Software Engineer — Java Backend",
   location: "India",
   tagline:
-    "I build the backend systems enterprise software runs on — production Spring Boot services, optimized PostgreSQL, and APIs that don't break at 3 PM on a Tuesday.",
+    "Backend Engineer with 3.5+ years of experience building production Spring Boot systems, optimizing PostgreSQL workloads, and solving complex business problems through scalable backend architecture.",
   email: "shahrukhturk9@gmail.com",
   linkedin: "https://www.linkedin.com/in/moh-shahrukh-khan",
   github: "https://github.com/MohShahrukhKhan",
   githubUsername: "MohShahrukhKhan",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: null,
 };
 
 export const heroMetrics = [
@@ -21,76 +21,107 @@ export const experience = [
   {
     company: "MobiOffice",
     role: "Software Engineer — Java Backend",
-    period: "Present",
+    period: "2023 — Present",
     location: "India",
     summary:
-      "The primary environment where I design, build, and optimize the backend systems that power enterprise inventory, sales, and operations platforms used by real businesses daily.",
+      "Design, build, and optimize production backend systems — Spring Boot microservices, PostgreSQL at scale, REST APIs, and performance-critical query paths — powering enterprise inventory, sales, and operations platforms used by real businesses daily.",
     points: [
       "Architect Spring Boot microservices with domain-driven boundaries — inventory, sales returns, order fulfilment — each with its own schema, API contract, and deployment pipeline.",
       "Design normalized PostgreSQL schemas for multi-warehouse stock tracking. Optimize query performance through composite indexing, partial indexes, CTE rewrites, and materialized views for heavy aggregation paths.",
       "Build REST APIs with JWT authentication, role-based access control, request validation, pagination cursors, and OpenAPI documentation — consumed by 4+ internal products.",
       "Resolve production incidents involving race conditions on concurrent stock reservations (row-level locks + retry with backoff), N+1 query cascades (entity graphs + DTO projections), and connection pool starvation (Hikari tuning + monitoring).",
-      "Integrate AI-assisted engineering workflows — Claude Code for pair-programming and refactoring, OpenCode for repo-wide migrations, custom MCP servers for internal docs and DB schema access.",
+    ],
+  },
+  {
+    company: "ATISHAE WEB",
+    role: "Software Engineer",
+    period: "2022 — 2023",
+    location: "Surat, India",
+    summary:
+      "Built enterprise backend systems for the jewelry manufacturing domain — production tracking, material traceability, and inventory management at scale.",
+    points: [
+      "Built a Manufacturing Execution System (MES) for jewelry production — tracked material movement, inventory, and production lifecycle end-to-end using Java, Spring Boot, and MySQL.",
+      "Developed REST APIs for warehouse management, goods receipt (GRN), inter-warehouse transfers, and returns processing with audit history.",
+      "Integrated Elasticsearch for fast search across inventory catalogs and external pricing APIs for real-time valuation.",
     ],
   },
 ];
 
 export const caseStudies = [
   {
-    id: "stock-reporting",
-    title: "Real-time Stock Reporting Engine",
-    tagline: "From 38-second reports to 5-second answers.",
+    id: "wip-stock-report",
+    title: "WIP Stock Report Optimization",
+    tagline: "38-second reports to 5-second answers. Without touching the frontend.",
     context:
-      "Operations teams needed daily stock positions across multiple warehouses. The existing report query ran multi-million row aggregations against the production OLTP database, timing out during peak hours.",
+      "Operations ran a daily WIP stock position report that queried millions of rows across the production OLTP database. The query would timeout during peak hours, leaving teams with stale data or no report at all. Adding indexes wasn't enough — the aggregation pattern itself was fighting the row-store design.",
     approach: [
       "Designed a read-optimized PostgreSQL schema with materialized views for pre-computed aggregations, refreshed incrementally via scheduled batch jobs.",
-      "Replaced JPA entity graph traversal with hand-written projection DTOs and JDBC template for the heaviest read paths.",
-      "Added pagination cursors and connection-pool isolation for reporting queries to prevent interference with transactional traffic.",
+      "Replaced JPA entity graph traversal with hand-written projection DTOs using JDBC template for the heaviest read paths.",
+      "Added pagination cursors and isolated the reporting workload to a dedicated Hikari connection pool to prevent interference with transactional traffic.",
     ],
     results: [
       "Report generation dropped from ~38s to ~5s on peak datasets — 87% reduction.",
       "Operations team closes daily review in minutes instead of hours.",
-      "Reporting queries zero-impact on OLTP p95 latency.",
+      "Zero impact on OLTP p95 latency during reporting windows.",
     ],
     technologies: ["Java 17", "Spring Boot", "JPA / Hibernate", "PostgreSQL", "REST", "Docker"],
     accent: "from-indigo-500/20 to-indigo-900/0",
   },
   {
-    id: "returns-lifecycle",
-    title: "Returns Lifecycle Management System",
-    tagline: "Closed-loop reverse logistics with full auditability.",
+    id: "inventory-management",
+    title: "Inventory Management System",
+    tagline: "3x throughput with predictable latency under production load.",
     context:
-      "The returns process spanned request → approval → pickup → QC → restocking → refund, with multiple teams touching the same data. Concurrent updates caused inconsistent state, and compliance required an immutable audit trail.",
+      "A centralized inventory platform managing stock movements, transfers, adjustments, and reservations across multiple warehouses. Race conditions under concurrent load would corrupt stock ledgers, and bulk imports of 50k-line files took 12 minutes — blocking the import pipeline.",
     approach: [
-      "Split the domain into three bounded modules — request, fulfilment, finance — each with its own database schema and API boundary.",
-      "Used Spring State Machine to enforce valid state transitions with guard conditions. Applied optimistic locking with retry for concurrent access.",
-      "Built an append-only event log with cryptographic chaining (SHA-256 of previous entry) to satisfy compliance audit requirements.",
-    ],
-    results: [
-      "Eliminated reconciliation errors between returns and finance ledgers.",
-      "Reduced average return processing cycle by ~40% across regions.",
-      "Audit trail passed external compliance review on first pass.",
-    ],
-    technologies: ["Java", "Spring Boot", "Spring State Machine", "PostgreSQL", "REST", "Maven"],
-    accent: "from-emerald-500/20 to-emerald-900/0",
-  },
-  {
-    id: "inventory-platform",
-    title: "Multi-warehouse Inventory Platform",
-    tagline: "3x throughput with predictable latency.",
-    context:
-      "A centralized inventory platform handling stock movements, transfers, adjustments, and reservations across multiple warehouses. Race conditions under concurrent load and bulk import performance were the critical problems.",
-    approach: [
-      "Designed transactional service boundaries with write-ahead movement ledger. Used PostgreSQL row-level locks (`SELECT ... FOR UPDATE`) with exponential backoff for reservation contention.",
-      "Replaced bulk JPA saves with batched JDBC inserts and chunked transaction windows for import performance.",
-      "Added Redis caching for read-heavy stock-summary queries with TTL-based invalidation tied to write events.",
+      "Designed transactional service boundaries with a write-ahead movement ledger. Used PostgreSQL row-level locks (`SELECT ... FOR UPDATE`) with exponential backoff for reservation contention.",
+      "Replaced bulk JPA saves with batched JDBC inserts and chunked transaction windows, reducing lock duration on the inventory tables.",
+      "Added Redis caching for read-heavy stock-summary queries with TTL-based invalidation triggered by write events.",
     ],
     results: [
       "Sustains 3x previous throughput on stock movements with stable p95 latency under 200ms.",
       "Bulk import processing time reduced from 12 minutes to 2 minutes for 50k-line files.",
-      "API contracts now power 4 downstream products without breaking changes in 8 months.",
+      "API contracts now power 4 downstream products without a breaking change in 8 months.",
     ],
     technologies: ["Java", "Spring Boot", "Hibernate", "PostgreSQL", "Redis", "Docker", "Microservices"],
+    accent: "from-emerald-500/20 to-emerald-900/0",
+  },
+  {
+    id: "postgres-query-optimization",
+    title: "PostgreSQL Query Optimization",
+    tagline: "N+1 cascades, connection pool starvation, and query plans that don't scale.",
+    context:
+      "Three separate production incidents traced back to the database layer: a returns list endpoint triggering 3,200+ SQL queries, connection pool exhaustion during report generation windows, and slow-growing query times on tables crossing 10M rows. Each required a different diagnostic approach and a different fix.",
+    approach: [
+      "Diagnosed N+1 via Hibernate SQL logging — JPA `@OneToMany` lazy loading cascaded through return → line items → QC checks → images. Fixed with `@EntityGraph` and `JOIN FETCH` JPQL projections, dropping 3,200 queries to 4.",
+      "Resolved connection pool starvation by splitting into two Hikari pools — transactional (max 15) and reporting (max 5, 30s timeout) — with monitoring alerts on pool exhaustion.",
+      "Rewrote slow aggregation queries using composite indexes, partial indexes on soft-delete filters, and CTE-based pagination to keep query plans stable as data grew.",
+    ],
+    results: [
+      "Returns API latency dropped from 14s to 180ms — a 98% reduction.",
+      "Transaction p95 latency immediately recovered after connection pool split.",
+      "Query execution times remained stable as tables grew from 2M to 12M rows.",
+    ],
+    technologies: ["Java 17", "Spring Boot", "PostgreSQL", "Hibernate", "JDBC", "JProfiler"],
+    accent: "from-violet-500/20 to-violet-900/0",
+  },
+  {
+    id: "workflow-automation",
+    title: "Workflow Automation",
+    tagline: "State machines, event logs, and a compliance audit that passed on the first try.",
+    context:
+      "A returns and dispute resolution workflow spanning request → approval → pickup → QC → restocking → refund. Multiple teams touched the same data at different stages. Concurrent updates caused inconsistent state, and regulatory compliance required an immutable audit trail with no gaps.",
+    approach: [
+      "Split the domain into three bounded modules — request, fulfilment, finance — each with its own database schema and API boundary to reduce cross-team contention.",
+      "Used Spring State Machine to enforce valid state transitions with guard conditions. Applied optimistic locking with retry for concurrent access from multiple teams.",
+      "Built an append-only event log with cryptographic chaining (SHA-256 of previous entry hash) to satisfy compliance audit requirements without a separate audit service.",
+    ],
+    results: [
+      "Eliminated reconciliation errors between returns and finance ledgers entirely.",
+      "Reduced average return processing cycle by ~40% across regions.",
+      "Audit trail passed external compliance review on the first pass — no findings.",
+    ],
+    technologies: ["Java", "Spring Boot", "Spring State Machine", "PostgreSQL", "REST", "Maven"],
     accent: "from-violet-500/20 to-violet-900/0",
   },
 ];
@@ -136,7 +167,7 @@ export const skills = {
   Database: ["PostgreSQL", "MySQL", "Query Optimization", "Indexing Strategy", "Materialized Views", "Redis", "Connection Pooling"],
   "Performance": ["p95 Latency Analysis", "Query Profiling", "Thread Dump Analysis", "GC Tuning", "Load Testing", "Caching Strategy"],
   DevOps: ["Docker", "Git", "Maven", "Linux", "CI/CD", "GitHub Actions"],
-  Tools: ["IntelliJ IDEA", "Postman", "OpenAPI / Swagger", "JUnit", "Mockito", "AI-assisted Engineering"],
+  Tools: ["IntelliJ IDEA", "Postman", "OpenAPI / Swagger", "JUnit", "Mockito", "Elasticsearch"],
 };
 
 export const systemDesign = [

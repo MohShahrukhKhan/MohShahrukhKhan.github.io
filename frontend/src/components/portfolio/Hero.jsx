@@ -67,15 +67,18 @@ export default function Hero() {
           </div>
 
           <h1 className="font-display text-[clamp(2.5rem,10vw,7rem)] leading-[0.92] font-extrabold tracking-tight">
-            <span className="text-gradient">Backend engineer.</span>
+            <span className="text-gradient">Java Backend</span>
             <br />
-            <span className="text-gradient">Systems thinker.</span>
+            <span className="text-gradient">Engineer —</span>
             <br />
-            <span className="text-gradient-accent">Production-focused.</span>
+            <span className="text-gradient-accent">3+ Years Production</span>
           </h1>
 
           <p className="mt-6 max-w-2xl text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed text-balance">
             {profile.tagline}
+          </p>
+          <p className="mt-3 max-w-2xl text-sm text-[var(--text-tertiary)] leading-relaxed text-balance">
+            Spring Boot · PostgreSQL · Microservices · REST APIs · Query Optimization · Production Debugging
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
@@ -86,13 +89,15 @@ export default function Hero() {
               View Case Studies
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
             </a>
-            <a
-              href={profile.resumeUrl}
-              className="inline-flex items-center gap-2 surface hover:border-[var(--border-accent)] text-[var(--text-primary)] px-5 py-3 rounded-full text-sm font-medium transition-all hover:-translate-y-0.5"
-            >
-              <Download size={16} />
-              Resume
-            </a>
+            {profile.resumeUrl && (
+              <a
+                href={profile.resumeUrl}
+                className="inline-flex items-center gap-2 surface hover:border-[var(--border-accent)] text-[var(--text-primary)] px-5 py-3 rounded-full text-sm font-medium transition-all hover:-translate-y-0.5"
+              >
+                <Download size={16} />
+                Resume
+              </a>
+            )}
             <a
               href="#contact"
               className="inline-flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] px-3 py-3 rounded-full text-sm font-medium"

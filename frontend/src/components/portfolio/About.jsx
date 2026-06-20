@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { Database, Server, Workflow, Bug } from "lucide-react";
+import { Server, Database, Workflow, Bug } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 const pillars = [
-  { icon: Server, title: "Spring Boot Engineering", desc: "Production microservices with domain-driven boundaries, clean layers, and predictable API contracts." },
-  { icon: Database, title: "PostgreSQL & SQL", desc: "Schema design, indexing strategy, query optimization, materialized views, and connection pool tuning." },
-  { icon: Workflow, title: "API Development", desc: "REST APIs with authentication, pagination, validation, OpenAPI docs — consumed by 4+ internal products." },
-  { icon: Bug, title: "Production Debugging", desc: "Thread dumps, slow query triage, race condition analysis, heap profiling, and load testing." },
+  { icon: Server, title: "Backend Development", desc: "Spring Boot microservices with domain-driven boundaries, clean layered architecture, and API contracts consumed by 4+ internal products." },
+  { icon: Database, title: "Database Optimization", desc: "PostgreSQL schema design, composite/partial indexing, CTE rewrites, materialized views, connection pool tuning — measured in p95 latency." },
+  { icon: Workflow, title: "System Design", desc: "REST APIs, microservices boundaries, event-driven workflows, state machines, and read/write path separation for platforms that need to scale." },
+  { icon: Bug, title: "Production Debugging", desc: "Thread dump analysis, N+1 query triage, race condition diagnosis, heap profiling, and load testing under production traffic." },
 ];
 
 export default function About() {

@@ -10,7 +10,7 @@ export default function Experience() {
         <SectionHeading
           kicker="Experience"
           title="MobiOffice — where the work happens."
-          subtitle="One role, deep impact. Every system described below shipped to production and handles real enterprise load."
+          subtitle="Two roles, real production systems. Every project described below shipped to production and handles real enterprise load."
         />
 
         <div className="mt-16 relative">
