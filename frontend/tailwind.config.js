@@ -4,9 +4,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        surface: "var(--bg-surface)",
+        elevated: "var(--bg-elevated)",
+        accent: {
+          DEFAULT: "var(--accent)",
+          hover: "var(--accent-hover)",
+          subtle: "var(--accent-subtle)",
+        },
+        border: {
+          DEFAULT: "var(--border-subtle)",
+          accent: "var(--border-accent)",
+        },
+      },
+      borderRadius: {
+        DEFAULT: "var(--radius)",
+      },
+      maxWidth: {
+        content: "1050px",
       },
     },
   },
