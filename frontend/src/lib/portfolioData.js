@@ -66,6 +66,7 @@ export const caseStudies = [
       "Zero ORM-induced N+1 queries across the 3 heaviest read paths — dashboard aggregations, budget spent tracking, and CSV export — all use native SQL or direct JDBC.",
     ],
     technologies: ["Java 17", "Spring Boot 3", "Spring Security", "Spring Data JPA", "Hibernate", "PostgreSQL", "React", "Vite", "Tailwind CSS", "Docker", "Maven"],
+    github: "https://github.com/MohShahrukhKhan/finance-tracker",
     accent: "from-amber-500/20 to-amber-900/0",
   },
   {

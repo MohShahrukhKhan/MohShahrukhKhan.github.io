@@ -31,7 +31,13 @@ export default function CaseStudies() {
                       <Layers size={11} /> Case {String(idx + 1).padStart(2, "0")}
                     </div>
                   </div>
-                  <ArrowUpRight size={20} className="text-[var(--text-tertiary)] group-hover:text-[var(--text-primary)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                  {p.github ? (
+                    <a href={p.github} target="_blank" rel="noreferrer">
+                      <ArrowUpRight size={20} className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:-translate-y-0.5 hover:translate-x-0.5 transition-all" />
+                    </a>
+                  ) : (
+                    <ArrowUpRight size={20} className="text-[var(--text-tertiary)] group-hover:text-[var(--text-primary)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                  )}
                 </div>
 
                 <div className="mt-6 grid lg:grid-cols-12 gap-8">
