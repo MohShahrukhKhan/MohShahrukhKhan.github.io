@@ -6,6 +6,7 @@ __pycache__/
 dist/
 .venv/
 target/
+finance-tracker/
 backend-showcase/
 writing/
 our-story.html
