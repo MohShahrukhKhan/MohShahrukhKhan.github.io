@@ -10,7 +10,7 @@ export default function CaseStudies() {
         <SectionHeading
           kicker="Case Studies"
           title="Enterprise systems, shipped."
-          subtitle="Four platforms and performance fixes built at MobiOffice — each solving real operational problems with measurable results."
+          subtitle="Production systems built at MobiOffice and a full-stack architecture showcase — each solving real operational problems with measurable results."
         />
 
         <div className="mt-16 space-y-8">

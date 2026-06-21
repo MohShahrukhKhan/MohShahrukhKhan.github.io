@@ -49,6 +49,26 @@ export const experience = [
 
 export const caseStudies = [
   {
+    id: "personal-finance-tracker",
+    title: "Personal Finance Tracker",
+    tagline: "Full-stack finance platform with UUID-secured APIs, native SQL aggregations, and Docker Compose deployment.",
+    context:
+      "Built a personal finance management application as a full-stack architecture showcase — Spring Boot 3 backend, React frontend, and PostgreSQL database. Users can register, log in, manage categories (income/expense), record transactions with soft-delete, view real-time dashboard summaries, set monthly budgets, and export data as CSV. The project demonstrates production-grade patterns: stateless JWT auth, UUID-based resource identifiers, dynamic query specifications, native SQL for OLAP-style aggregations, lazy-loading prevention, and containerized deployment.",
+    approach: [
+      "Designed the PostgreSQL schema with BigSerial internal PKs for join performance and UUID public identifiers for all API resources — preventing ID enumeration while maintaining fast FK joins.",
+      "Built a dynamic transaction search layer using Spring Data JPA Specifications — composable predicates for date range, amount bounds, category filter, soft-delete exclusion, sort direction, and pagination — all without inline JPQL.",
+      "Computed dashboard summary, monthly trend, and category breakdown via hand-written native SQL instead of ORM — 4 aggregate queries across 2 tables with COALESCE guards, no N+1 risk, no lazy-loading pitfalls.",
+      "Implemented stateless JWT authentication (HMAC-SHA512, 24h expiry), user-scoped resource isolation via Principal injection at the controller level, soft-delete with query-level filtering, and DTO projections throughout.",
+    ],
+    results: [
+      "All 7 integration test suites pass: auth flows (register/login/duplicate/invalid/unauthenticated), category CRUD with user isolation, transaction filters (date/amount/category/sort/pagination), dashboard (I=$10k, E=$6k, B=$4k), budget (60% spent on $10k limit), CSV export, and soft-delete verified via direct DB check.",
+      "Docker Compose orchestration — single docker compose up starts PostgreSQL 16, Spring Boot backend (port 8081), and React frontend served by nginx (port 5174) with API proxy configured.",
+      "Zero ORM-induced N+1 queries across the 3 heaviest read paths — dashboard aggregations, budget spent tracking, and CSV export — all use native SQL or direct JDBC.",
+    ],
+    technologies: ["Java 17", "Spring Boot 3", "Spring Security", "Spring Data JPA", "Hibernate", "PostgreSQL", "React", "Vite", "Tailwind CSS", "Docker", "Maven"],
+    accent: "from-amber-500/20 to-amber-900/0",
+  },
+  {
     id: "wip-stock-report",
     title: "WIP Stock Report Optimization",
     tagline: "38-second reports to 5-second answers. Without touching the frontend.",

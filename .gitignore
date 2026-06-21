@@ -4,3 +4,10 @@ __pycache__/
 *.pyc
 .DS_Store
 dist/
+.venv/
+target/
+backend-showcase/
+writing/
+our-story.html
+wife.jpeg
+with-wife.jpeg
